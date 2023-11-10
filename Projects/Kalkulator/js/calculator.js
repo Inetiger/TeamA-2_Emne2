@@ -1,5 +1,6 @@
 // Model
 result = "";
+index = 0;
 
 // Controller
 
@@ -11,6 +12,7 @@ function addToResult(value) {
 function clearResult() {
     result = "";
     displayResult(result);
+    indxe = 0;
 }
 
 function calculateResult() {
@@ -22,7 +24,20 @@ function calculateResult() {
     }
 }
 
+function backlash() {
+    if (result.length > 0) {
+        result = result.slice(0, -1); // Fjern det siste tegnet
+        displayResult(result);
+    }
+}
+
+
 // View
 function displayResult(result) {
+    if (index == 3) {
+        result += '.';
+        index = 0;
+    }
+    index ++;
     document.getElementById("result").value = result;
 }
